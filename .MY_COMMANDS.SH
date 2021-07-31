@@ -39,6 +39,8 @@ alias kasuhelp='kasuHelp'
 gitlazy() {
 	if [ "$1" = "" ];then 
 		echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
+		echo ""
+		echo "================================================================="
 		git add .
 		git commit -m "commitment are the best"
 		git push -u origin main
