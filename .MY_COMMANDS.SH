@@ -41,11 +41,11 @@ gitlazy() {
 		echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
 		git add .
 		git commit -m "commitment are the best"
-		git push
+		git push -u origin main
 	else
 		git add .
 		git commit -m "$1"
-		git push
+		git push -u origin main
 	fi
 }
 gitcreate() {
@@ -56,7 +56,7 @@ gitcreate() {
 		echo "# 👋 Hey, This is a README.md lol" > readme.md
 		git add .
 		git commit -m "First Commit"
-		git push
+		git push -u origin main
 	fi
 }
 
