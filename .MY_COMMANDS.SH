@@ -138,7 +138,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #git push automatic
         gpa() {
-            if [ "$@" = "" ];then 
+            if [ "$*" == "" ];then 
                 echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
                 echo ""
                 echo "================================================================="
@@ -146,7 +146,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
                 git commit -m "commitment are the best"
                 git push -u origin main
             else
-                comment=$@
+                comment=$*
                 git add .
                 git commit -m "$comment"
                 git push -u origin main
@@ -155,9 +155,9 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #git init automatic
         gca() {
-            if [ "$@" != "" ];then 
+            if [ "$*" != "" ];then 
                 git init
-                git remote add origin "$@"
+                git remote add origin "$*"
                 git branch -M main
                 echo "# 👋 Hey, This is a README.md lol" > readme.md
                 git add .
@@ -168,7 +168,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     # git cloner but throw error is changed when entered none lol or etc
         cl() {
-            if [ "$1" = "" ]
+            if [ "$1" = ="" ]
             then 
                 echo "Bruh? where's the rest?"
             else
@@ -179,11 +179,11 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
 # cmd's md lol
     md() {
-        if [ "$@" = "" ]
+        if [ "$*" = "" ]
         then 
             echo "No name entered!"
         else
-            mkdir "$@"
-            DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion "$@"
+            mkdir "$*"
+            DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion "$*"
         fi
     }
