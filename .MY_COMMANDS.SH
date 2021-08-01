@@ -105,8 +105,8 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     #pings
         alias pg='ping'
         alias pgg='ping -t google.com'
-        #this is where my custom ping/speedtest are.
-        alias adPing='node "C:\Users\Administrator\Desktop\programming stuff\github repo\myCommandBash\index.js"'
+        #this is where my custom ping/speedtest are. find urs
+            alias adPing='node "C:\Users\Administrator\Desktop\programming stuff\github repo\myCommandBash\index.js"'
         alias adping=adPing
         alias ADPING=adPing
 
@@ -137,52 +137,53 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 # git shortcut
 
     #git push automatic
-    gpa() {
-        if [ "$1" = "" ];then 
-            echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
-            echo ""
-            echo "================================================================="
-            git add .
-            git commit -m "commitment are the best"
-            git push -u origin main
-        else
-            git add .
-            git commit -m "$1"
-            git push -u origin main
-        fi
-    }
+        gpa() {
+            if [ "$@" = "" ];then 
+                echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
+                echo ""
+                echo "================================================================="
+                git add .
+                git commit -m "commitment are the best"
+                git push -u origin main
+            else
+                comment=$@
+                git add .
+                git commit -m "$comment"
+                git push -u origin main
+            fi
+        }
 
     #git init automatic
-    gca() {
-        if [ "$1" != "" ];then 
-            git init
-            git remote add origin "$1"
-            git branch -M main
-            echo "# 👋 Hey, This is a README.md lol" > readme.md
-            git add .
-            git commit -m "First Commit"
-            git push -u origin main
-        fi
-    }
+        gca() {
+            if [ "$@" != "" ];then 
+                git init
+                git remote add origin "$@"
+                git branch -M main
+                echo "# 👋 Hey, This is a README.md lol" > readme.md
+                git add .
+                git commit -m "First Commit"
+                git push -u origin main
+            fi
+        }
 
-# git cloner but throw error is changed when entered none lol or etc
-    cl() {
-        if [ "$1" = "" ]
-        then 
-            echo "Bruh? where's the rest?"
-        else
-            git clone "$1"
-            DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion $1 "cl"
-        fi
-    }
+    # git cloner but throw error is changed when entered none lol or etc
+        cl() {
+            if [ "$1" = "" ]
+            then 
+                echo "Bruh? where's the rest?"
+            else
+                git clone "$1"
+                DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion $1 "cl"
+            fi
+        }
 
 # cmd's md lol
     md() {
-        if [ "$1" = "" ]
+        if [ "$@" = "" ]
         then 
             echo "No name entered!"
         else
-            mkdir "$1"
-            DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion $1
+            mkdir "$@"
+            DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion "$@"
         fi
     }
