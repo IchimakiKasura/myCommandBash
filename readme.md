@@ -11,4 +11,4 @@ git add .
 git commit -u "COMMIIIIIIIIIIIIIIIIIIIT"
 git push -m origin main
 ```
-to just ```gitlazy```
+to just ```gpa```
