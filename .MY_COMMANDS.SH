@@ -1,5 +1,3 @@
-#!bin/bash
-
 # help function
 kasuHelp() {
     echo "
@@ -63,7 +61,9 @@ alias cls='clear'
 alias nrun='node .'
 alias pg='ping -t google.com'
 alias kasuhelp='kasuHelp'
-
+alias adPing='node "C:\Users\Administrator\Desktop\programming stuff\github repo\myCommandBash\index.js"'
+alias adping=adPing
+alias ADPING=adPing
 # lazy push
 gitlazy() {
 	if [ "$1" = "" ];then 
