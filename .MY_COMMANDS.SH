@@ -1,5 +1,34 @@
 #!bin/bash
-source './.kasuHelp.sh'
+
+# help function
+kasuHelp() {
+    echo "
+    ╔═════════════════╦═══════════════════════════════════╗     
+    ║ simple commands ╠═══════════════════════════════════╣     
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ cls             ║ Clear the console                 ║     
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ nrun            ║ shortcut to \"node .\"              ║   
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ pg              ║ shortcut to \"ping -t google.com\"  ║   
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ kasuHelp        ║ of course this?                   ║     
+    ╚═════════════════╩═══════════════════════════════════╝     
+
+    ╔═════════════════╦═══════════════════════════════════╗     
+    ║ other commands  ╠═══════════════════════════════════╣     
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ gitlazy         ║ git push but faster               ║     
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ gitcreate       ║ git init but automatic            ║     
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ cl              ║ git clone but in 1 call           ║     
+    ╠═════════════════╬═══════════════════════════════════╣     
+    ║ md              ║ uh its just mkdir but will cancel ║     
+    ║                 ║ if no name type idk. freakin'     ║     
+    ║                 ║ mkdir but 2 letters only          ║     
+    ╚═════════════════╩═══════════════════════════════════╝"
+}
 # Use it freely if you want to
 echo "╔═══════════════════════════╗
 ║ Ichimaki-chan commands :D ║
@@ -83,3 +112,4 @@ md() {
         DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion $1
 	fi
 }
+
