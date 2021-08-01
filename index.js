@@ -1,5 +1,7 @@
 // advance ping lol hehe ehe
 
+// p.s if it doesn't work well idk about u
+// maybe u forgot to install the network-speed globally or in ur node_modules
 import NetworkSpeed from 'network-speed';
 const testNetworkSpeed = new NetworkSpeed();
 import { exec } from 'child_process';
