@@ -146,9 +146,8 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
                 git commit -m "commitment are the best"
                 git push -u origin main
             else
-                comment=$*
                 git add .
-                git commit -m "$comment"
+                git commit -m "$*"
                 git push -u origin main
             fi
         }
