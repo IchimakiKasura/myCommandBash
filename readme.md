@@ -11,4 +11,4 @@ git add .
 git commit -u "COMMIIIIIIIIIIIIIIIIIIIT"
 git push -m origin main
 ```
-to just ```gpa```
+to just ```gpa``` or with commit message like ```gpa "this is very epic"``` or ```gpa new commit yeet```
