@@ -118,7 +118,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #git lol
         alias g='git'
-        alias gp='git push'
+        alias gp='git push -f'
         alias gc='git init'
         alias ga='git add'
         alias gb='git branch'
@@ -155,11 +155,11 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
                 echo "================================================================="
                 git add .
                 git commit -m "commitment are the best"
-                git push -u origin main
+                git push -u origin main -f
             else
                 git add .
                 git commit -m "$*"
-                git push -u origin main
+                git push -u origin main -f
             fi
         }
 
