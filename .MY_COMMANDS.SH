@@ -18,27 +18,29 @@
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ g               ║ shortcut to git command           ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gp              ║ git push                          ║      
+        ║ nod             ║ shortcut to node command          ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ ga              ║ git add                           ║      
+        ║ gp / gpush      ║ git push                          ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gb              ║ git branc                         ║      
+        ║ ga / gadd       ║ git add                           ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gl              ║ git clone                         ║      
+        ║ gb / gbranch    ║ git branch                        ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gc              ║ git init                          ║      
+        ║ gl / gclone     ║ git clone                         ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gm              ║ git commit                        ║      
+        ║ gc / gcreate    ║ git init                          ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ gm / gcommit    ║ git commit                        ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ e               ║ shortcut to echo command          ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ n               ║ shortcut to npm command           ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ na              ║ npm init -y                       ║      
+        ║ na / ncreate    ║ npm init -y                       ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ ni              ║ npm install                       ║      
+        ║ ni / ninstall   ║ npm install                       ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ nu              ║ npm unistall                      ║      
+        ║ nu / nuninstall ║ npm unistall                      ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ nout            ║ npm outdated                      ║      
         ╠═════════════════╬═══════════════════════════════════╣     
@@ -48,9 +50,9 @@
         ╔═════════════════╦═══════════════════════════════════╗     
         ║ other commands  ╠═══════════════════════════════════╣     
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gitlazy         ║ git push but faster               ║     
+        ║ gitlazy / gpa   ║ git push but faster               ║     
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gitcreate       ║ git init but automatic            ║     
+        ║ gitcreate / gca ║ git init but automatic            ║     
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ cl              ║ git clone but in 1 call w/ sum    ║
         ║                 ║ special error or idk you call it. ║             
@@ -98,6 +100,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias cls='clear'
 
     #node
+        alias nod='node'
         alias nrun='node .'
         alias ndot=nrun
         alias nd=nrun
@@ -121,6 +124,14 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias gb='git branch'
         alias gm='git commit'
         alias gl='git clone'
+        alias gitlazy='gpa'
+        alias gitcreate='gca'
+        alias gpush='gp'
+        alias gadd='ga'
+        alias gbranch='gb'
+        alias gclone='gl'
+        alias gcreate='gc'
+        alias gcommit='gm'
 
     #wa
         alias e='echo'
@@ -154,14 +165,22 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #git init automatic
         gca() {
-            if [ "$*" != "" ];then 
-                git init
-                git remote add origin "$*"
-                git branch -M main
-                echo "# 👋 Hey, This is a README.md lol" > readme.md
-                git add .
-                git commit -m "First Commit"
-                git push -u origin main
+            FILE="./lol.a"
+            # accidental publish.
+            # lol I got that same accident that's why I added this
+            # almost ruined my own project.
+            if [ -f "$FILE" ]; then
+                echo "can't create if there's a readme.md existed";
+            else
+                if [ "$*" != "" ];then 
+                    git init
+                    git remote add origin "$*"
+                    git branch -M main
+                    echo "# 👋 Hey, This is a README.md lol" > readme.md
+                    git add .
+                    git commit -m "First Commit"
+                    git push -u origin main
+                fi
             fi
         }
 
