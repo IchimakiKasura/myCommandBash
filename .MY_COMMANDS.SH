@@ -180,6 +180,8 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
                     git add .
                     git commit -m "First Commit"
                     git push -u origin main
+                else
+                    echo "please add the 'REPOSITORY URL'"
                 fi
             fi
         }
