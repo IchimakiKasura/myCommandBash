@@ -165,7 +165,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #git init automatic
         gca() {
-            FILE="./lol.a"
+            FILE="./readme.md"
             # accidental publish.
             # lol I got that same accident that's why I added this
             # almost ruined my own project.
