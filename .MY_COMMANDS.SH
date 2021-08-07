@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # help function
     kasuHelp() {
         echo "
@@ -145,6 +146,8 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias nout='npm outdated'
         alias nupd='npm update'
 
+        alias hclear='history -c'
+
 # git shortcut
 
     #git push automatic
@@ -207,3 +210,9 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion "$*"
         fi
     }
+
+# clears history so yeah.
+history -c
+history -w
+sleep .8
+cls
