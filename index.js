@@ -2,9 +2,9 @@
 
 // p.s if it doesn't work well idk about u
 // maybe u forgot to install the network-speed globally or in ur node_modules
-import NetworkSpeed from 'network-speed';
+const NetworkSpeed = require('network-speed');
 const testNetworkSpeed = new NetworkSpeed();
-import { exec } from 'child_process';
+const { exec } = require('child_process');
 let num = 1;
 let address = "finding address";
 

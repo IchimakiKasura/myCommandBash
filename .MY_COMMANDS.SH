@@ -45,7 +45,9 @@
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ nout            ║ npm outdated                      ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ nupd            ║ npm update                        ║      
+        ║ nupd            ║ npm update                        ║          
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ npak            ║ npm pack --dry-run                ║      
         ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
@@ -136,6 +138,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #wa
         alias e='echo'
+        alias hclear='history -c'
     
     #npm
         alias n='npm'
@@ -145,8 +148,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias np='npm publish'
         alias nout='npm outdated'
         alias nupd='npm update'
-
-        alias hclear='history -c'
+        alias npak='npm pack --dry-run'
 
 # git shortcut
 
