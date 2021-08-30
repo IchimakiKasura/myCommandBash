@@ -47,6 +47,8 @@
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ nupd            ║ npm update                        ║          
         ╠═════════════════╬═══════════════════════════════════╣     
+        ║ npr             ║ npm run                           ║          
+        ╠═════════════════╬═══════════════════════════════════╣     
         ║ npak            ║ npm pack --dry-run                ║      
         ╚═════════════════╩═══════════════════════════════════╝     
 
@@ -149,6 +151,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias nout='npm outdated'
         alias nupd='npm update'
         alias npak='npm pack --dry-run'
+        alias npr='npm run'
 
 # git shortcut
 
