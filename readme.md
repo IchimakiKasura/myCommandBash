@@ -21,9 +21,9 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ cls             ║ Clear the console                 ║     
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ nrun/ndot/nd    ║ shortcut to \"node .\"              ║   
+        ║ nrun/ndot/nd    ║ shortcut to "node ."              ║   
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ pg              ║ shortcut to \"ping -t google.com\"  ║   
+        ║ pg              ║ shortcut to "ping -t google.com"  ║   
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ kasuHelp        ║ of course this?                   ║
         ╠═════════════════╬═══════════════════════════════════╣     
