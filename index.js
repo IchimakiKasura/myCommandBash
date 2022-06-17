@@ -1,3 +1,4 @@
+// This shit is too inaccurate idk why 
 // advance ping lol hehe ehe
 
 // p.s if it doesn't work well idk about u
@@ -11,7 +12,7 @@ let address = "finding address";
 function testSpeed() {
     // clears anything idk I use CLI 
     // executes a batch file 
-    exec("ping google.com -n 1", async (err, st, std) => {
+    exec("ping www.google.com -n 1", async (err, st, std) => {
 
         let _ping = {
             "Total": {
@@ -62,45 +63,18 @@ function testSpeed() {
                 port: 80, // link's port
                 method: 'POST' // for the upload part
             }
-            , fileSizeInBytes = 38645 // bytes to download and upload
+            , fileSizeInBytesDown = 60000000 // bytes to download
+            , fileSizeInByteUp = 5000000 // bytes to upload
 
-        let speed1,speed2,speed3;
+        let speed1;
 
         try{
-            speed1 = await testNetworkSpeed.checkDownloadSpeed(baseUrl, fileSizeInBytes)
-        } catch(e) {
+            speed1 = await testNetworkSpeed.checkDownloadSpeed(baseUrl, fileSizeInBytesDown)
+        } catch {
             connectionTimeout(_ping)
         }
 
-            console.clear()
-            console.log(`Connection: www.google.com [${address}]`)
-            console.log("\x1b[1m")
-            console.table(_ping)
-            console.log("\x1b[0m")
-            console.log("Checking download speed..")
-
-        try {
-            speed2 = await testNetworkSpeed.checkDownloadSpeed(baseUrl, fileSizeInBytes)
-        } catch(e) {
-            connectionTimeout(_ping)
-        }
-
-            console.clear()
-            console.log(`Connection: www.google.com [${address}]`)
-            console.log("\x1b[1m")
-            console.table(_ping)
-            console.log("\x1b[0m")
-            console.log("Checking download speed...")
-
-        try {
-            speed3 = await testNetworkSpeed.checkDownloadSpeed(baseUrl, fileSizeInBytes)
-        } catch(e) {
-            connectionTimeout(_ping)
-        }
-            // download 3 times and calculate the speed best of 3
-            const speedTotal = parseFloat(speed1.mbps) + parseFloat(speed2.mbps) + parseFloat(speed3.mbps) / 3
-
-            _ping.Total.download = parseFloat(speedTotal).toFixed(2) + " mbps"
+        _ping.Total.download = parseFloat(await speed1.mbps).toFixed(2) + " mbps"
 
         console.clear()
         console.log(`Connection: www.google.com [${address}]`)
@@ -109,38 +83,17 @@ function testSpeed() {
         console.log("\x1b[0m")
         console.log("Checking upload speed.")
 
-        let uploadSpeed1,uploadSpeed2,uploadSpeed3;
+        let uploadSpeed1;
         // same shit but 'uploads'
         try{
-            uploadSpeed1 = await testNetworkSpeed.checkUploadSpeed(options, fileSizeInBytes)
-        } catch(e) {
+            uploadSpeed1 = await testNetworkSpeed.checkUploadSpeed(options, fileSizeInByteUp)
+            _ping.Total.upload = parseFloat(await uploadSpeed1.mbps).toFixed(2) + " mbps"
+        } catch(e) {z
+            uploadSpeed1 = UploadRetry(baseUrl, fileSizeInByteUp);
+            _ping.Total.upload = parseFloat(await uploadSpeed1.mbps).toFixed(2) + " mbps"
+        } finally {
             upspeedfail(_ping)
         }
-            console.clear()
-            console.log(`Connection: www.google.com [${address}]`)
-            console.log("\x1b[1m")
-            console.table(_ping)
-            console.log("\x1b[0m")
-            console.log("Checking upload speed..")
-        try{
-            uploadSpeed2 = await testNetworkSpeed.checkUploadSpeed(options, fileSizeInBytes)
-        } catch(e) {
-            upspeedfail(_ping)
-        }
-            console.clear()
-            console.log(`Connection: www.google.com [${address}]`)
-            console.log("\x1b[1m")
-            console.table(_ping)
-            console.log("\x1b[0m")
-            console.log("Checking upload speed...")
-        try{
-            uploadSpeed3 = await testNetworkSpeed.checkUploadSpeed(options, fileSizeInBytes)
-			const uploadSpeed = parseFloat(uploadSpeed1.mbps) + parseFloat(uploadSpeed2.mbps) + parseFloat(uploadSpeed3.mbps) / 3
-			_ping.Total.upload = parseFloat(uploadSpeed).toFixed(2) + " mbps"
-        } catch(e) {
-            upspeedfail(_ping)
-        }
-
 
         console.clear()
         console.log(`Connection: www.google.com [${address}]`)
@@ -185,6 +138,7 @@ function connectionTimeout(_ping) {
     console.log("ERROR: connection TIMEOUT")
     process.exit()
 }
+
 function upspeedfail(_ping){
     _ping.Total.upload = "Error"
 
@@ -194,4 +148,10 @@ function upspeedfail(_ping){
     console.table(_ping)
     console.log("\x1b[0m")
     return
+}
+
+async function UploadRetry(baseUrl, fileSizeInBytesDown)
+{
+    var Speed = await testNetworkSpeed.checkDownloadSpeed(baseUrl, fileSizeInBytesDown);
+    return Speed;
 }

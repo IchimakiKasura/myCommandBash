@@ -50,6 +50,12 @@
         ║ npr             ║ npm run                           ║          
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ npak            ║ npm pack --dry-run                ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ np              ║ npm publish                       ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ cppa            ║ g++ main.cpp                      ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ cppr            ║ g++ main.cpp(and will run the app)║      
         ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
@@ -84,7 +90,7 @@
     :type \"kasuHelp\" for help :>"
 #end start 
 
-# for future me please add "source <dir>/.MY_COMMANDS.SH" on the "aliases.sh"
+# for future me please add "source <dir>/.MY_COMMANDS.SH" on the "etc/profile.d/aliases.sh"
 
 # Check if command successfuly executed or not D:
 DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
@@ -114,7 +120,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias pg='ping'
         alias pgg='ping -t google.com'
         #this is where my custom ping/speedtest are. find urs
-            alias adPing='node "C:\Users\Administrator\Desktop\programming stuff\github repo\myCommandBash\index.js"'
+            alias adPing='node --report-dir="C:\Users\Administrator\Desktop\programming stuff\github repo\myCommandBash\index.js" .'
         alias adping=adPing
         alias ADPING=adPing
 
@@ -128,13 +134,13 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias ga='git add'
         alias gb='git branch'
         alias gm='git commit'
-        alias gl='git clone'
+        alias gl='__cl'
         alias gitlazy='gpa'
-        alias gitcreate='gca'
+        alias gitcreate='__gca'
         alias gpush='gp'
         alias gadd='ga'
         alias gbranch='gb'
-        alias gclone='gl'
+        alias gclone='__cl'
         alias gcreate='gc'
         alias gcommit='gm'
 
@@ -152,6 +158,9 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias nupd='npm update'
         alias npak='npm pack --dry-run'
         alias npr='npm run'
+
+    #gcc
+        alias cppa='g++ main.cpp'
 
 # git shortcut
 
@@ -172,7 +181,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         }
 
     #git init automatic
-        gca() {
+        __gca() {
             FILE="./readme.md"
             # accidental publish.
             # lol I got that same accident that's why I added this
@@ -195,7 +204,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         }
 
     # git cloner but throw error is changed when entered none lol or etc
-        cl() {
+        __cl() {
             if [ "$1" = ="" ]
             then 
                 echo "Bruh? where's the rest?"
@@ -213,6 +222,21 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         else
             mkdir "$*"
             DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion "$*"
+        fi
+    }
+
+    cppr()
+    {
+        if [ ! -f ./main.cpp ]; then
+            echo "\"main.cpp\" is not found! Please make sure it exist in the current directory."
+            return
+        fi
+
+        if g++ main.cpp; then
+            echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
+            ./a
+        else
+            echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
         fi
     }
 
