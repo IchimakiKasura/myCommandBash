@@ -9,7 +9,7 @@
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ nrun/ndot/nd    ║ shortcut to \"node .\"              ║   
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ pg              ║ shortcut to \"ping -t google.com\"  ║   
+        ║ pgg             ║ shortcut to \"ping -t google.com\"  ║   
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ kasuHelp        ║ of course this?                   ║
         ╠═════════════════╬═══════════════════════════════════╣     
@@ -65,7 +65,7 @@
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ gitcreate / gca ║ git init but automatic            ║     
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cl              ║ git clone but in 1 call w/ sum    ║
+        ║ gcl             ║ git clone but in 1 call w/ sum    ║
         ║                 ║ special error or idk you call it. ║             
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ md              ║ uh its just mkdir but will cancel ║     
@@ -126,6 +126,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     #help
         alias kasuhelp='kasuHelp'
+        alias khelp='kasuHelp'
 
     #git lol
         alias g='git'
@@ -134,13 +135,13 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias ga='git add'
         alias gb='git branch'
         alias gm='git commit'
-        alias gl='__cl'
+        alias gl='git clone'
         alias gitlazy='gpa'
-        alias gitcreate='__gca'
+        alias gitcreate='gca'
         alias gpush='gp'
         alias gadd='ga'
         alias gbranch='gb'
-        alias gclone='__cl'
+        alias gclone='git clone'
         alias gcreate='gc'
         alias gcommit='gm'
 
@@ -181,7 +182,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         }
 
     #git init automatic
-        __gca() {
+        gca() {
             FILE="./readme.md"
             # accidental publish.
             # lol I got that same accident that's why I added this
@@ -204,7 +205,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         }
 
     # git cloner but throw error is changed when entered none lol or etc
-        __cl() {
+        gcl() {
             if [ "$1" = ="" ]
             then 
                 echo "Bruh? where's the rest?"

@@ -64,6 +64,12 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ║ npr             ║ npm run                           ║          
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ npak            ║ npm pack --dry-run                ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ np              ║ npm publish                       ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ cppa            ║ g++ main.cpp                      ║      
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ cppr            ║ g++ main.cpp(and will run the app)║      
         ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
@@ -80,3 +86,10 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ║                 ║ if no name type idk. freakin'     ║     
         ║                 ║ mkdir but 2 letters only.         ║     
         ╚═════════════════╩═══════════════════════════════════╝
+
+# Note
+To use all of the shortcut commands you must have
+- npm
+- [node](https://nodejs.org/en/)
+- g++ compiler
+- git
