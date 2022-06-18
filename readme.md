@@ -79,7 +79,7 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ gitcreate / gca ║ git init but automatic            ║     
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cl              ║ git clone but in 1 call w/ sum    ║
+        ║ gcl             ║ git clone but in 1 call w/ sum    ║
         ║                 ║ special error or idk you call it. ║             
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ md              ║ uh its just mkdir but will cancel ║     
