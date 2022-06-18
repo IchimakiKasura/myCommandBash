@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+STRCOM="g++ main.cpp"
+
 # help function
     kasuHelp() {
         echo "
@@ -105,7 +107,6 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         fi
 }
 
-
 # shortcuts
     # got used to CMD ffs
         alias cls='clear'
@@ -160,23 +161,20 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias npak='npm pack --dry-run'
         alias npr='npm run'
 
-    #gcc
-        alias cppa='g++ main.cpp'
-
 # git shortcut
 
     #git push automatic
         gpa() {
-            if [ "$*" == "" ];then 
+            if [ "$*" ];then 
+                git add .
+                git commit -m "$*"
+                git push -u origin main -f
+            else
                 echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
                 echo ""
                 echo "================================================================="
                 git add .
                 git commit -m "commitment are the best"
-                git push -u origin main -f
-            else
-                git add .
-                git commit -m "$*"
                 git push -u origin main -f
             fi
         }
@@ -190,7 +188,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             if [ -f "$FILE" ]; then
                 echo "can't create if there's a readme.md existed";
             else
-                if [ "$*" != "" ];then 
+                if [ "$*" ];then 
                     git init
                     git remote add origin "$*"
                     git branch -M main
@@ -206,23 +204,23 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     # git cloner but throw error is changed when entered none lol or etc
         gcl() {
-            if [ "$1" = ="" ]
+            if [ "$1" ]
             then 
-                echo "Bruh? where's the rest?"
-            else
                 git clone "$1"
                 DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion $1 "cl"
+            else
+                echo "Bruh? where's the rest?"
             fi
         }
 
 # cmd's md lol
     md() {
-        if [ "$*" = "" ]
+        if [ "$*" ]
         then 
-            echo "No name entered!"
-        else
             mkdir "$*"
             DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion "$*"
+        else
+            echo "No name entered!"
         fi
     }
 
@@ -233,9 +231,42 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             return
         fi
 
-        if g++ main.cpp; then
+        if [ "$1" ]
+        then
+            STRCOM="g++ main.cpp -o $1"
+        fi
+
+        if [ "$2" ]; then
+            echo "Spaces are not supported yet!"
+            return
+        fi
+
+        if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
-            ./a
+            if [ "$*" != "" ]; then
+                ./$1
+            else 
+                ./a
+            fi
+        else
+            echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
+        fi
+    }
+
+    cppa()
+    {
+        if [ "$1" ]
+        then
+            STRCOM="g++ main.cpp -o $1"
+        fi
+
+        if [ "$2" ]; then
+            echo "Spaces are not supported yet!"
+            return
+        fi
+
+        if $STRCOM; then
+            echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
         else
             echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
         fi
