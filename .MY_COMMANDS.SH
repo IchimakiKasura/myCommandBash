@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-STRCOM="g++ main.cpp"
+STRCOM="g++ *.cpp"
 
 # help function
     kasuHelp() {
@@ -55,9 +55,9 @@ STRCOM="g++ main.cpp"
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ np              ║ npm publish                       ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cppa            ║ g++ main.cpp                      ║      
+        ║ cppa            ║ g++ *.cpp                         ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cppr            ║ g++ main.cpp(and will run the app)║      
+        ║ cppr            ║ g++ *.cpp (and will run the app)  ║      
         ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
@@ -226,25 +226,23 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     cppr()
     {
-        if [ ! -f ./main.cpp ]; then
-            echo "\"main.cpp\" is not found! Please make sure it exist in the current directory."
+        a=$*
+        IsExist=`ls -1 *.cpp 2>/dev/null | wc -l`
+
+        if [ $IsExist = 0 ]; then
+            echo "There's no \".cpp\" files are found! Please make sure they exist in the current directory."
             return
         fi
 
         if [ "$1" ]
         then
-            STRCOM="g++ main.cpp -o $1"
-        fi
-
-        if [ "$2" ]; then
-            echo "Spaces are not supported yet!"
-            return
+            STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
         fi
 
         if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
             if [ "$*" != "" ]; then
-                ./$1
+                ./${a// /-}
             else 
                 ./a
             fi
@@ -255,14 +253,17 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     cppa()
     {
-        if [ "$1" ]
-        then
-            STRCOM="g++ main.cpp -o $1"
+        a=$*
+        IsExist=`ls -1 *.cpp 2>/dev/null | wc -l`
+
+        if [ $IsExist = 0 ]; then
+            echo "There's no \".cpp\" files are found! Please make sure they exist in the current directory."
+            return
         fi
 
-        if [ "$2" ]; then
-            echo "Spaces are not supported yet!"
-            return
+        if [ "$1" ]
+        then
+            STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
         fi
 
         if $STRCOM; then
