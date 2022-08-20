@@ -5,6 +5,9 @@
 cuz' it might be I'm in new computer and had to recreate this
 again so yeah. 
 
+- requirements?
+  - [Oh My Posh](https://ohmyposh.dev/)
+
 p.s I only made this because I hate doing those long ones freakin
 ```bash
 git add .

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 STRCOM="g++ *.cpp"
 
+eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
+
 # help function
     kasuHelp() {
         echo "
