@@ -2,5 +2,5 @@
 
 void Test()
 {
-    std::cout << "CPP build test";
+    std::cout << "CPP build test\n";
 }

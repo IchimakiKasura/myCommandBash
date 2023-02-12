@@ -1,4 +1,25 @@
 #!/usr/bin/env bash
+
+#################################################
+#   Ichimaki kasura's Command Bash set list     #
+#                                               #
+#   This is my personal commands that I made    #
+#   feel free to use it on your own if you like #
+#################################################
+
+#     IMPORTANT BEFORE USING ALL OF THE COMMANDS
+#   (some may not work you if don't set this first)
+#
+#   Add these to your PATH:
+#   
+#   [NOTE: I have VS2022 if you have different version just always find the "MSBUILD" folder's bin.]
+#   %PROGRAMFILES%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin
+#
+#   [NOTE: I always build on x64 platform so you can change it to x86 because the name is still the same "CL.exe"]
+#   %PROGRAMFILES%\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\Hostx64\x64
+#
+#   %PROGRAMFILES%\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
+
 STRCOM="g++ *.cpp"
 
 eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
@@ -57,9 +78,12 @@ eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ np              ║ npm publish                       ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cppa            ║ g++ *.cpp                         ║      
+        ║ cppa            ║ g++ *.cpp | cl *.cpp              ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cppr            ║ g++ *.cpp (and will run the app)  ║      
+        ║ cppr            ║ g++ *.cpp | cl *.cpp              ║
+        ║                 ║      (and will run the app)       ║     
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ cpp             ║ g++ | cl                          ║
         ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
@@ -163,6 +187,9 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias npak='npm pack --dry-run'
         alias npr='npm run'
 
+    # its weird git bash wont run msbuild directly but needs an '.exe' hmm
+        alias msbuild='msbuild.exe'
+
 # git shortcut
 
     #git push automatic
@@ -226,23 +253,34 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         fi
     }
 
+# c++
     cppr()
     {
         a=$*
         IsExist=`ls -1 *.cpp 2>/dev/null | wc -l`
+        gccExist=`! command -v g++ 2>/dev/null | wc -l`
 
         if [ $IsExist = 0 ]; then
             echo "There's no \".cpp\" files are found! Please make sure they exist in the current directory."
             return
         fi
 
-        if [ "$1" ]
-        then
-            STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
+        if [ "$1" ]; then
+                STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
+        fi
+
+        if [ $gccExist = 0 ]; then
+            if [ -z "$a" ]; then
+                a="a"
+            fi
+            STRCOM="cmd '/C call vcvars64.bat && cl *.cpp -Fe"${a// /-}
         fi
 
         if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
+            echo '======RUNNING======'
+            echo
+            rm *.obj
             if [ "$*" != "" ]; then
                 ./${a// /-}
             else 
@@ -250,6 +288,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             fi
         else
             echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
+            rm *.obj
         fi
     }
 
@@ -257,21 +296,42 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     {
         a=$*
         IsExist=`ls -1 *.cpp 2>/dev/null | wc -l`
+        gccExist=`! command -v g++ 2>/dev/null | wc -l`
 
         if [ $IsExist = 0 ]; then
             echo "There's no \".cpp\" files are found! Please make sure they exist in the current directory."
             return
         fi
 
-        if [ "$1" ]
-        then
-            STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
+        if [ "$1" ]; then
+                STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
+        fi
+
+        if [ $gccExist = 0 ]; then
+            if [ -z "$a" ]; then
+                a="a"
+            fi
+            STRCOM="cmd '/C call vcvars64.bat && cl *.cpp -Fe"${a// /-}
         fi
 
         if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
+            rm *.obj
         else
             echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
+            rm *.obj
+        fi
+    }
+
+    cpp()
+    {
+        gccExist=`! command -v g++ 2>/dev/null | wc -l`
+
+        if [ $gccExist = 1 ];
+        then
+            g++
+        else
+            cmd "/C call vcvars64.bat && cl $*"
         fi
     }
 

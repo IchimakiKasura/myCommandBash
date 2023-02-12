@@ -70,10 +70,13 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ np              ║ npm publish                       ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cppa            ║ g++ main.cpp                      ║      
+        ║ cppa            ║ g++ *.cpp | cl *.cpp              ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ cppr            ║ g++ main.cpp(and will run the app)║      
-        ╚═════════════════╩═══════════════════════════════════╝     
+        ║ cppr            ║ g++ *.cpp | cl *.cpp              ║
+        ║                 ║      (and will run the app)       ║     
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ cpp             ║ g++ | cl                          ║
+        ╚═════════════════╩═══════════════════════════════════╝  
 
         ╔═════════════════╦═══════════════════════════════════╗     
         ║ other commands  ╠═══════════════════════════════════╣     
@@ -94,5 +97,20 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
 To use all of the shortcut commands you must have
 - npm
 - [node](https://nodejs.org/en/)
-- g++ compiler
+- g++ compiler (this is optional if you have cl.exe [Microsoft Visual Studio])
 - git
+
+---
+IMPORTANT BEFORE USING ALL OF THE COMMANDS <br>
+(some may not work you if don't set this first)<br>
+Add these to your PATH:<br><br>
+
+[NOTE: I have VS2022 if you have different version just always find the "MSBUILD" folder's bin.]<br>
+>%PROGRAMFILES%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin<br>
+
+[NOTE: I always build on x64 platform so you can change it to x86 because the name is still the same "CL.exe"]<br>
+>%PROGRAMFILES%\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\Hostx64\x64<br>
+
+>%PROGRAMFILES%\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
+
+if not set the commands `cppa, cppr, cpp, msbuild` will not work
