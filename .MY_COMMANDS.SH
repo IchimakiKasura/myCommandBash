@@ -22,6 +22,7 @@
 
 STRCOM="g++ *.cpp"
 
+# Remove or comment this out if you don't have oh-my-posh
 eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
 
 # help function
@@ -273,7 +274,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             if [ -z "$a" ]; then
                 a="a"
             fi
-            STRCOM="cmd '/C call vcvars64.bat && cl *.cpp -Fe"${a// /-}
+            STRCOM="cmd '/C call vcvars64.bat && cl -O2 -Zi -EHsc *.cpp -std:c++latest -Fe"${a// /-}
         fi
 
         if $STRCOM; then
@@ -281,6 +282,8 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             echo '======RUNNING======'
             echo
             rm *.obj
+            rm *.ilk
+            rm *.pdb
             if [ "$*" != "" ]; then
                 ./${a// /-}
             else 
@@ -288,7 +291,9 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             fi
         else
             echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
+            rm *.pdb
             rm *.obj
+            rm *.ilk
         fi
     }
 
@@ -311,14 +316,18 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             if [ -z "$a" ]; then
                 a="a"
             fi
-            STRCOM="cmd '/C call vcvars64.bat && cl *.cpp -Fe"${a// /-}
+            STRCOM="cmd '/C call vcvars64.bat && cl -O2 -Zi -EHsc *.cpp -std:c++latest -Fe"${a// /-}
         fi
 
         if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
+            rm *.pdb
+            rm *.ilk
             rm *.obj
         else
             echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
+            rm *.pdb
+            rm *.ilk
             rm *.obj
         fi
     }
