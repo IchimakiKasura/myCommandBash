@@ -30,9 +30,7 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ kasuHelp        ║ of course this?                   ║
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ pg              ║ shortcut to ping command          ║      
-        ╠═════════════════╬═══════════════════════════════════╣     
-        ║ adPing/adping   ║ advance ping and speedtest        ║  -> this is experimental. Try not always use it.    
+        ║ pg              ║ shortcut to ping command          ║
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ g               ║ shortcut to git command           ║      
         ╠═════════════════╬═══════════════════════════════════╣     
@@ -44,9 +42,9 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ gb / gbranch    ║ git branch                        ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gl / gclone     ║ git clone                         ║      
+        ║ gl / gc / gclone║ git clone                         ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gc / gcreate    ║ git init                          ║      
+        ║ gcr/ gcreate    ║ git init                          ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ gm / gcommit    ║ git commit                        ║      
         ╠═════════════════╬═══════════════════════════════════╣     

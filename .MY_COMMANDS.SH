@@ -40,9 +40,7 @@ eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
         ║ kasuHelp        ║ of course this?                   ║
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ pg              ║ shortcut to ping command          ║      
-        ╠═════════════════╬═══════════════════════════════════╣     
-        ║ adPing/adping   ║ advance ping and speedtest        ║      
-        ╠═════════════════╬═══════════════════════════════════╣     
+        ╠═════════════════╬═══════════════════════════════════╣
         ║ g               ║ shortcut to git command           ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ nod             ║ shortcut to node command          ║      
@@ -53,9 +51,9 @@ eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ gb / gbranch    ║ git branch                        ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gl / gclone     ║ git clone                         ║      
+        ║ gl / gc / gclone║ git clone                         ║      
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ gc / gcreate    ║ git init                          ║      
+        ║ gcr/ gcreate    ║ git init                          ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ gm / gcommit    ║ git commit                        ║      
         ╠═════════════════╬═══════════════════════════════════╣     
@@ -147,10 +145,6 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     #pings
         alias pg='ping'
         alias pgg='ping -t google.com'
-        #this is where my custom ping/speedtest are. find urs
-            alias adPing='node --report-dir="C:\Users\Administrator\Desktop\programming stuff\github repo\myCommandBash\index.js" .'
-        alias adping=adPing
-        alias ADPING=adPing
 
     #help
         alias kasuhelp='kasuHelp'
@@ -159,18 +153,19 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     #git lol
         alias g='git'
         alias gp='git push -f'
-        alias gc='git init'
         alias ga='git add'
         alias gb='git branch'
         alias gm='git commit'
         alias gl='git clone'
+        alias gc='git clone'
+        alias gcr='git init'
         alias gitlazy='gpa'
         alias gitcreate='gca'
         alias gpush='gp'
         alias gadd='ga'
         alias gbranch='gb'
         alias gclone='git clone'
-        alias gcreate='gc'
+        alias gcreate='gcr'
         alias gcommit='gm'
 
     #wa
@@ -190,6 +185,14 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     # its weird git bash wont run msbuild directly but needs an '.exe' hmm
         alias msbuild='msbuild.exe'
+
+    # attrib shortcuts
+        alias ShowAllHidden='attrib -h *.*'
+        alias ShowAllSystem='attrib -s *.*'
+        alias ShowAllHiddenSystem='attrib -s -h *.*'
+
+    # taskkill
+        alias killtask='taskkill -f -im '
 
 # git shortcut
 
