@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #################################################
 #   Ichimaki kasura's Command Bash set list     #
@@ -23,7 +23,7 @@
 STRCOM="g++ *.cpp"
 
 # Remove or comment this out if you don't have oh-my-posh
-eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
+eval "$(oh-my-posh init bash --config C:/Users/Administrator/AppData/Local/Programs/oh-my-posh/themes/jandedobbeleer.omp.json)"
 
 # help function
     kasuHelp() {
@@ -83,6 +83,9 @@ eval "$(oh-my-posh init bash --config ~/.jandedobbeleer.omp.json)"
         ║                 ║      (and will run the app)       ║     
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ cpp             ║ g++ | cl                          ║
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ jvc             ║ java build and run                ║
+        ║                 ║ [make sure the file is named app] ║   
         ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
@@ -194,6 +197,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     # taskkill
         alias killtask='taskkill -f -im '
 
+
 # git shortcut
 
     #git push automatic
@@ -289,8 +293,10 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             rm *.pdb
             if [ "$*" != "" ]; then
                 ./${a// /-}
+                echo
             else 
                 ./a
+                echo
             fi
         else
             echo $'\E[0;31m'BUILD FAILED$'\E[0;0m'
@@ -347,8 +353,24 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         fi
     }
 
+#java
+    jvc()
+    {
+        cd bin
+        if java -XX:+ShowCodeDetailsInExceptionMessages App
+        then
+        printf "\nRUN SUCCESS\n"
+        else
+        printf "\nRUN FAILED!"
+        echo "Make sure the class is named 'App'\n"
+        fi
+        
+        cd ..
+    }
+
+
 # clears history so yeah.
 history -c
 history -w
 sleep .8
-cls
+clear

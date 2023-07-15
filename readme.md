@@ -24,14 +24,14 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ cls             ║ Clear the console                 ║     
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ nrun/ndot/nd    ║ shortcut to "node ."              ║   
+        ║ nrun/ndot/nd    ║ shortcut to \"node .\"            ║   
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ pg              ║ shortcut to "ping -t google.com"  ║   
+        ║ pgg             ║ shortcut to \"ping -t google.com\"║   
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ kasuHelp        ║ of course this?                   ║
         ╠═════════════════╬═══════════════════════════════════╣     
-        ║ pg              ║ shortcut to ping command          ║
-        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ pg              ║ shortcut to ping command          ║      
+        ╠═════════════════╬═══════════════════════════════════╣
         ║ g               ║ shortcut to git command           ║      
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ nod             ║ shortcut to node command          ║      
@@ -74,7 +74,10 @@ can access through ```kasuhelp``` or ```kasuHelp``` or ```khelp```
         ║                 ║      (and will run the app)       ║     
         ╠═════════════════╬═══════════════════════════════════╣     
         ║ cpp             ║ g++ | cl                          ║
-        ╚═════════════════╩═══════════════════════════════════╝  
+        ╠═════════════════╬═══════════════════════════════════╣     
+        ║ jvc             ║ java build and run                ║
+        ║                 ║ [make sure the file is named app] ║   
+        ╚═════════════════╩═══════════════════════════════════╝     
 
         ╔═════════════════╦═══════════════════════════════════╗     
         ║ other commands  ╠═══════════════════════════════════╣     
