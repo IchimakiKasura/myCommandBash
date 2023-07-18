@@ -9,18 +9,26 @@
 
 #     IMPORTANT BEFORE USING ALL OF THE COMMANDS
 #   (some may not work you if don't set this first)
-#
-#   Add these to your PATH:
 #   
 #   [NOTE: I have VS2022 if you have different version just always find the "MSBUILD" folder's bin.]
-#   %PROGRAMFILES%\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin
+#   [Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin]
+MSBUILD_PATH="F:\Community\MSBuild\Current\Bin"
 #
 #   [NOTE: I always build on x64 platform so you can change it to x86 because the name is still the same "CL.exe"]
-#   %PROGRAMFILES%\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\Hostx64\x64
+#   [Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\Hostx64\x64]
+C_CPP_COMPILER="F:\Community\VC\Tools\MSVC\14.35.32215\bin\Hostx64\x64"
 #
-#   %PROGRAMFILES%\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build
+#   [Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build]
+C_CPP_STARTER="F:\Community\VC\Auxiliary\Build"
+#
+#   INSTALLATION:
+#       open ".bash_profile"
+#       add this: source "<path to the shell>\\.MY_COMMANDS.SH"
+#
 
-STRCOM="g++ *.cpp"
+# STRCOM="g++ *.cpp"
+
+
 
 # Remove or comment this out if you don't have oh-my-posh
 eval "$(oh-my-posh init bash --config C:/Users/Administrator/AppData/Local/Programs/oh-my-posh/themes/jandedobbeleer.omp.json)"
@@ -120,8 +128,6 @@ eval "$(oh-my-posh init bash --config C:/Users/Administrator/AppData/Local/Progr
     :type \"kasuHelp\" for help :>"
 #end start 
 
-# for future me please add "source <dir>/.MY_COMMANDS.SH" on the "etc/profile.d/aliases.sh"
-
 # Check if command successfuly executed or not D:
 DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     if [ $? = 0 ]; then
@@ -187,7 +193,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         alias npr='npm run'
 
     # its weird git bash wont run msbuild directly but needs an '.exe' hmm
-        alias msbuild='msbuild.exe'
+        alias msbuild="${MSBUILD_PATH}\msbuild.exe"
 
     # attrib shortcuts
         alias ShowAllHidden='attrib -h *.*'
@@ -205,14 +211,14 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
             if [ "$*" ];then 
                 git add .
                 git commit -m "$*"
-                git push -u origin main -f
+                git push -u origin main -f } || git push -u origin master -f
             else
                 echo "No comment Inputed so yeah defaulted to 'commitment are the best'"
                 echo ""
                 echo "================================================================="
                 git add .
                 git commit -m "commitment are the best"
-                git push -u origin main -f
+                git push -u origin main -f || git push -u origin master -f
             fi
         }
 
@@ -232,7 +238,7 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
                     echo "# 👋 Hey, This is a README.md lol" > readme.md
                     git add .
                     git commit -m "First Commit"
-                    git push -u origin main
+                    git push -u origin main -f || git push -u origin master -f
                 else
                     echo "please add the 'REPOSITORY URL'"
                 fi
@@ -266,23 +272,23 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     {
         a=$*
         IsExist=`ls -1 *.cpp 2>/dev/null | wc -l`
-        gccExist=`! command -v g++ 2>/dev/null | wc -l`
+        # gccExist=`! command -v g++ 2>/dev/null | wc -l`
 
         if [ $IsExist = 0 ]; then
             echo "There's no \".cpp\" files are found! Please make sure they exist in the current directory."
             return
         fi
 
-        if [ "$1" ]; then
-                STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
-        fi
+        # if [ "$1" ]; then
+        #         STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
+        # fi
 
-        if [ $gccExist = 0 ]; then
-            if [ -z "$a" ]; then
-                a="a"
-            fi
-            STRCOM="cmd '/C call vcvars64.bat && cl -O2 -Zi -EHsc *.cpp -std:c++latest -Fe"${a// /-}
-        fi
+        # if [ $gccExist = 0 ]; then
+        #     if [ -z "$a" ]; then
+        #         a="a"
+        #     fi
+            STRCOM="cmd '/C call ${C_CPP_STARTER}\vcvars64.bat && ${C_CPP_COMPILER}\cl.exe -O2 -Zi -EHsc *.cpp -std:c++latest -Fe"${a// /-}
+        #fi
 
         if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
@@ -310,23 +316,23 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
     {
         a=$*
         IsExist=`ls -1 *.cpp 2>/dev/null | wc -l`
-        gccExist=`! command -v g++ 2>/dev/null | wc -l`
+        # gccExist=`! command -v g++ 2>/dev/null | wc -l`
 
         if [ $IsExist = 0 ]; then
             echo "There's no \".cpp\" files are found! Please make sure they exist in the current directory."
             return
         fi
 
-        if [ "$1" ]; then
-                STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
-        fi
+        # if [ "$1" ]; then
+        #         STRCOM="g++ *.cpp -o ${a// /-} -lgdi32"
+        # fi
 
-        if [ $gccExist = 0 ]; then
-            if [ -z "$a" ]; then
-                a="a"
-            fi
-            STRCOM="cmd '/C call vcvars64.bat && cl -O2 -Zi -EHsc *.cpp -std:c++latest -Fe"${a// /-}
-        fi
+        # if [ $gccExist = 0 ]; then
+        #     if [ -z "$a" ]; then
+        #         a="a"
+        #     fi
+            STRCOM="cmd '/C call ${C_CPP_STARTER}\vcvars64.bat && ${C_CPP_COMPILER}\cl.exe -O2 -Zi -EHsc *.cpp -std:c++latest -Fe"${a// /-}
+        # fi
 
         if $STRCOM; then
             echo $'\E[0;32m'BUILD SUCCESS$'\E[0;0m'
@@ -343,14 +349,14 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
 
     cpp()
     {
-        gccExist=`! command -v g++ 2>/dev/null | wc -l`
+        # gccExist=`! command -v g++ 2>/dev/null | wc -l`
 
-        if [ $gccExist = 1 ];
-        then
-            g++
-        else
-            cmd "/C call vcvars64.bat && cl $*"
-        fi
+        # if [ $gccExist = 1 ];
+        # then
+            # g++
+        # else
+            cmd "/C call ${C_CPP_STARTER}\vcvars64.bat && ${C_CPP_COMPILER}\cl.exe $*"
+        # fi
     }
 
 #java
@@ -367,7 +373,6 @@ DoesTheCommandReallyExecutedOrNotHeresTheAnswerToYourQuestion(){
         
         cd ..
     }
-
 
 # clears history so yeah.
 history -c
